@@ -532,7 +532,7 @@ ExternalProject_Add(${INCBIN_PRJ}
 # zstd
 
 if(WITH_ZSTD_BUILD)
-  set(__LIBZSTD "${DEPS}/lib64/libzstd.a")
+  set(__LIBZSTD "${DEPS}/${CMAKE_INSTALL_LIBDIR}/libzstd.a")
   ExternalProject_Add(${ZSTD_PRJ}
     PREFIX ${DEPS}
     GIT_REPOSITORY "https://github.com/facebook/zstd.git"
