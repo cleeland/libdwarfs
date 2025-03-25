@@ -196,6 +196,16 @@ else()
   elseif("${OSTYPE_TXT}" MATCHES "^linux-gnu.*")
     # Needed for eaccess ( ~> File.readable?)
     set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
+
+    # needed on older platforms where a modern version of openssl may be
+    # compiled from source, e.g., centos 7.9
+    if(DEFINED ENV{OPENSSL_ROOT_DIR})
+      set(OPENSSL_ROOT_DIR "$ENV{OPENSSL_ROOT_DIR}")
+      message(STATUS "Found OPENSSL_ROOT_DIR = ${OPENSSL_ROOT_DIR}")
+    endif(DEFINED ENV{OPENSSL_ROOT_DIR})
+    if (DEFINED OPENSSL_ROOT_DIR)
+      set(OPENSSL_OPTION "-DOPENSSL_ROOT_DIR=${OPENSSL_ROOT_DIR}")
+    endif(DEFINED OPENSSL_ROOT_DIR)
   elseif("${OSTYPE_TXT}" MATCHES "^darwin.*")
     set(IS_DARWIN ON)
     message(STATUS "Building jemalloc library locally")
