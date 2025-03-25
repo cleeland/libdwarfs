@@ -307,7 +307,7 @@ endif(CMAKE_BUILD_TYPE STREQUAL Debug)
 # ...................................................................
 # External projects
 
-def_ext_prj_g(DWARFS "tebako-v0.8.8")
+def_ext_prj_g(DWARFS "centos7.9.2009")
 def_ext_prj_g(INCBIN "348e36b")
 
 if(NOT IS_WINDOWS)
@@ -481,7 +481,7 @@ endif(NOT IS_WINDOWS AND NOT IS_MSYS)
 
 ExternalProject_Add(${DWARFS_PRJ}
   PREFIX ${DEPS}
-  GIT_REPOSITORY https://github.com/tamatebako/dwarfs.git
+  GIT_REPOSITORY https://github.com/cleeland/dwarfs.git
   GIT_TAG ${DWARFS_TAG}
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${DEPS}
